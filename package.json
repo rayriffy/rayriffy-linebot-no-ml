@@ -15,6 +15,7 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
@@ -22,10 +23,12 @@
     "rimraf": "^2.6.2"
   },
   "scripts": {
-    "deploy": "yarn run package-functions && firebase deploy",
+    "lint": "eslint ./src/index.js",
+    "deploy": "yarn run package-functions && firebase deploy --only functions",
     "prepackage-functions": "rimraf functions",
     "package-functions": "babel ./src --out-dir ./functions --presets=es2015 --copy-files --ignore ./node_modules",
     "postpackage-functions": "cd functions && yarn",
-    "format": "prettier --write --no-semi --list-different './src/**/*.js'"
+    "format": "prettier --write --no-semi --list-different './src/**/*.js'",
+    "serve": "yarn run package-functions && firebase serve --only functions"
   }
 }
