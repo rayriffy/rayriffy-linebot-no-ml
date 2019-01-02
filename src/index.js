@@ -166,8 +166,7 @@ export let linebot = functions.https.onRequest((req, res) => {
         },
       })
     })
-  }
-  else {
+  } else {
     res.status(200).send(`OK`)
   }
 })
